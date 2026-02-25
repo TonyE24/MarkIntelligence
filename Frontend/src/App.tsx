@@ -3,6 +3,7 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import DashboardPage from './pages/DashboardPage'
+import CompanySetupPage from './pages/CompanySetupPage'
 
 // componente que protege rutas: si no hay token manda al login
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
@@ -26,6 +27,12 @@ function App() {
         <Route path="/dashboard" element={
           <PrivateRoute>
             <DashboardPage />
+          </PrivateRoute>
+        } />
+
+        <Route path="/setup-company" element={
+          <PrivateRoute>
+            <CompanySetupPage />
           </PrivateRoute>
         } />
       </Routes>
