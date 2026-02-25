@@ -41,4 +41,66 @@ class IntelligenceController extends Controller
             'market_analysis' => $data
         ]);
     }
+
+    // Endpoint para Inteligencia de Tendencias (analiza lo que suena en redes)
+    public function getTrendData(Request $request)
+    {
+        $companyId = $request->query('company_id');
+
+        // verificamos la empresa
+        $company = Auth::user()->companies()->find($companyId);
+
+        if (!$company) {
+            return response()->json(['message' => 'Empresa no encontrada o no tienes acceso'], 404);
+        }
+
+        // le pedimos los datos al servicio (sin argumentos, que asi esta definido en el servicio)
+        $data = $this->mockData->getTrendData();
+
+        return response()->json([
+            'company_name' => $company->name,
+            'industry' => $company->industry,
+            'trend_analysis' => $data
+        ]);
+    }
+
+    /**
+     * Endpoint para Inteligencia de Predicción (Series temporales)
+     */
+    public function getPredictionData(Request $request)
+    {
+        $companyId = $request->query('company_id');
+        $company = Auth::user()->companies()->find($companyId);
+
+        if (!$company) {
+            return response()->json(['message' => 'Empresa no encontrada'], 404);
+        }
+
+        $data = $this->mockData->getPredictionData();
+
+        return response()->json([
+            'company_name' => $company->name,
+            'predictions' => $data
+        ]);
+    }
+
+    /**
+     * Endpoint para Inteligencia de Innovación (Oportunidades)
+     */
+    public function getInnovationData(Request $request)
+    {
+        $companyId = $request->query('company_id');
+        $company = Auth::user()->companies()->find($companyId);
+
+        if (!$company) {
+            return response()->json(['message' => 'Empresa no encontrada'], 404);
+        }
+
+        $data = $this->mockData->getInnovationData();
+
+        return response()->json([
+            'company_name' => $company->name,
+            'innovation_opportunities' => $data
+        ]);
+    }
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\IntelligenceController;
 
-// rutas publicas: cualquiera puede acceder sin necesitar token
+// rutas publicas cualquiera puede acceder sin necesitar token
 Route::prefix('auth')->group(function () {
     // POST /api/auth/register → para crear una cuenta nueva
     Route::post('/register', [AuthController::class, 'register']);
@@ -58,4 +58,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // rutas de inteligencia (módulos principales)
     Route::get('/intelligence/market', [IntelligenceController::class, 'getMarketData']);
+    Route::get('/intelligence/trends', [IntelligenceController::class, 'getTrendData']);
+    Route::get('/intelligence/predictions', [IntelligenceController::class, 'getPredictionData']);
+    Route::get('/intelligence/innovation', [IntelligenceController::class, 'getInnovationData']);
 });
