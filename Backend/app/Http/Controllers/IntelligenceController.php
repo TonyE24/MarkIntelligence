@@ -125,6 +125,7 @@ class IntelligenceController extends Controller
 
     /**
      * Endpoint para Inteligencia de Innovación (Oportunidades)
+     * Detectamos nichos, gaps y tecnologias
      */
     public function getInnovationData(Request $request)
     {
@@ -135,11 +136,23 @@ class IntelligenceController extends Controller
             return response()->json(['message' => 'Empresa no encontrada'], 404);
         }
 
-        $data = $this->mockData->getInnovationData();
+        // intentamos obtener datos reales de la BD
+        $innovationData = $company->innovationData()->get();
+
+        // si no hay datos, usamos el fallback de mock data
+        if ($innovationData->isEmpty()) {
+            $data = $this->mockData->getInnovationData();
+            return response()->json([
+                'company_name' => $company->name,
+                'innovation_opportunities' => $data,
+                'source' => 'mock_data'
+            ]);
+        }
 
         return response()->json([
             'company_name' => $company->name,
-            'innovation_opportunities' => $data
+            'innovation_opportunities' => $innovationData,
+            'source' => 'real_data'
         ]);
     }
 }
