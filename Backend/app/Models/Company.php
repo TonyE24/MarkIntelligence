@@ -28,4 +28,10 @@ class Company extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // una empresa tiene muchos registros de datos historicos para prediccion
+    public function predictionData()
+    {
+        return $this->hasMany(PredictionIntelligence::class);
+    }
 }

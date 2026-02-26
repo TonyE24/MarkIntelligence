@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import api from '../services/api'
 
 function CompanySetupPage() {
@@ -50,8 +51,12 @@ function CompanySetupPage() {
       await api.post('/companies', form)
       // si todo sale bien, lo mandamos al dashboard
       navigate('/dashboard')
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Error al guardar la empresa')
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.message || 'Error al guardar la empresa')
+      } else {
+        setError('Error al guardar la empresa')
+      }
     } finally {
       setLoading(false)
     }

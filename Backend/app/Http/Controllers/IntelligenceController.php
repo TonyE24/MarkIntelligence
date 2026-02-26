@@ -66,6 +66,7 @@ class IntelligenceController extends Controller
 
     /**
      * Endpoint para Inteligencia de Predicción (Series temporales)
+     * Aqui usamos el algoritmo de Regresion Lineal para proyectar ventas
      */
     public function getPredictionData(Request $request)
     {
@@ -76,11 +77,49 @@ class IntelligenceController extends Controller
             return response()->json(['message' => 'Empresa no encontrada'], 404);
         }
 
-        $data = $this->mockData->getPredictionData();
+        // obtenemos los datos historicos de la base de datos
+        $historicalRecords = $company->predictionData()->orderBy('date', 'asc')->get();
+
+        // si no tenemos suficientes datos (al menos 2), usamos los de prueba para no dejar vacio
+        if ($historicalRecords->count() < 2) {
+            $data = $this->mockData->getPredictionData();
+            return response()->json([
+                'company_name' => $company->name,
+                'predictions' => $data,
+                'source' => 'mock_data' // avisamos que son datos simulados
+            ]);
+        }
+
+        // preparamos los valores para el algoritmo
+        $values = $historicalRecords->pluck('value')->toArray();
+        
+        // queremos predecir los proximos 3 meses
+        $proyectedValues = \App\Helpers\LinearRegressionHelper::predict($values, 3);
+
+        // formateamos la respuesta para que el frontend la entienda (meses reales + proyectados)
+        $formattedData = $historicalRecords->map(function($record) {
+            return [
+                'period' => \Carbon\Carbon::parse($record->date)->format('M Y'),
+                'actual' => $record->value,
+                'predicted' => null
+            ];
+        })->toArray();
+
+        $lastDate = \Carbon\Carbon::parse($historicalRecords->last()->date);
+
+        foreach ($proyectedValues as $i => $val) {
+            $lastDate->addMonth();
+            $formattedData[] = [
+                'period' => $lastDate->format('M Y'),
+                'actual' => null,
+                'predicted' => round($val, 2)
+            ];
+        }
 
         return response()->json([
             'company_name' => $company->name,
-            'predictions' => $data
+            'predictions' => $formattedData,
+            'source' => 'algorithm_prediction'
         ]);
     }
 
