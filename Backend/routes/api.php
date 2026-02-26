@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\IntelligenceController;
 
-// rutas publicas: cualquiera puede acceder sin necesitar token
+// rutas publicas cualquiera puede acceder sin necesitar token
 Route::prefix('auth')->group(function () {
     // POST /api/auth/register → para crear una cuenta nueva
     Route::post('/register', [AuthController::class, 'register']);
@@ -43,7 +43,7 @@ Route::middleware('auth:sanctum')->group(function () {
         });
     });
 
-    // rutas para usuarios normales: necesitan token + rol user
+    // rutas para usuarios normales necesitan token + rol user
     // ejemplo: ruta para ver el perfil propio
     Route::middleware('role:user')->group(function () {
         Route::get('/profile', function (Request $request) {
@@ -53,9 +53,12 @@ Route::middleware('auth:sanctum')->group(function () {
         });
     });
 
-    // rutas para manejar empresas (CRUD)
+    // rutas para manejar empresas CRUD
     Route::apiResource('companies', CompanyController::class);
 
-    // rutas de inteligencia (módulos principales)
+    // rutas de inteligencia módulos principales
     Route::get('/intelligence/market', [IntelligenceController::class, 'getMarketData']);
+    Route::get('/intelligence/trends', [IntelligenceController::class, 'getTrendData']);
+    Route::get('/intelligence/predictions', [IntelligenceController::class, 'getPredictionData']);
+    Route::get('/intelligence/innovation', [IntelligenceController::class, 'getInnovationData']);
 });

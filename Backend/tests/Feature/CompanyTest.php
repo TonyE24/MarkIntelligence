@@ -32,7 +32,7 @@ class CompanyTest extends TestCase
         // mandamos la peticion POST
         $res = $this->postJson('/api/companies', $datos);
 
-        // chequeamos que responda "creado" (201) y que los datos coincidan
+        // chequeamos que responda "creado" 201 y que los datos coincidan
         $res->assertStatus(201)
             ->assertJsonPath('company.name', 'Mi Nueva Pyme');
             
