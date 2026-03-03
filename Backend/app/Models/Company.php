@@ -34,4 +34,10 @@ class Company extends Model
     {
         return $this->hasMany(PredictionIntelligence::class);
     }
+
+    // una empresa tiene muchos registros de inteligencia de innovacion
+    public function innovationData()
+    {
+        return $this->hasMany(InnovationIntelligence::class);
+    }
 }
