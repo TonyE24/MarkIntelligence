@@ -1,39 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { createPortal } from 'react-dom'
-
-export type ToastType = 'success' | 'error' | 'warning' | 'info'
-
-export interface ToastMessage {
-  id: string
-  type: ToastType
-  message: string
-  duration?: number  // ms hasta que se auto-cierra, default 4000
-}
-
-// ---------------------------------------------------------------
-// Store de toasts: usamos un patrón de suscriptores simple
-// para poder llamar a showToast() desde cualquier parte del código
-// sin necesidad de Context ni Redux
-// ---------------------------------------------------------------
-type Listener = (toast: ToastMessage) => void
-const listeners: Listener[] = []
-
-export const toast = {
-  success: (message: string, duration?: number) => dispatch('success', message, duration),
-  error:   (message: string, duration?: number) => dispatch('error',   message, duration),
-  warning: (message: string, duration?: number) => dispatch('warning', message, duration),
-  info:    (message: string, duration?: number) => dispatch('info',    message, duration),
-}
-
-function dispatch(type: ToastType, message: string, duration = 4000) {
-  const toastMsg: ToastMessage = {
-    id: `${Date.now()}-${Math.random()}`,
-    type,
-    message,
-    duration,
-  }
-  listeners.forEach(fn => fn(toastMsg))
-}
+import { type ToastType, type ToastMessage, listeners } from './toastStore'
 
 // ---------------------------------------------------------------
 // Estilos por tipo de toast
