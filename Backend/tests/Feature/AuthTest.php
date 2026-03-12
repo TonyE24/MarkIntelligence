@@ -146,7 +146,7 @@ class AuthTest extends TestCase
         // debe devolver 200 y un mensaje de exito
         $respuesta
             ->assertStatus(200)
-            ->assertJsonFragment(['message' => 'Te enviamos un link para restablecer tu contrasena']);
+            ->assertJsonFragment(['message' => 'Te enviamos un link para que puedas restablecer la contraseña']);
 
         // verifico que si se envio la notificacion de reset al usuario
         Notification::assertSentTo($usuario, ResetPasswordNotification::class);
@@ -197,7 +197,7 @@ class AuthTest extends TestCase
         // debe devolver 200 con mensaje de exito
         $respuesta
             ->assertStatus(200)
-            ->assertJsonFragment(['message' => 'Contrasena actualizada exitosamente']);
+            ->assertJsonFragment(['message' => 'Contraseña ha sido reestablecida']);
 
         // verifico en la BD que la contraseña realmente cambio
         $usuario->refresh();
