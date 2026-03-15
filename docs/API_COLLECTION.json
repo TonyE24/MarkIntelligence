@@ -1,0 +1,320 @@
+{
+  "info": {
+    "_postman_id": "markintelligence-api-v1",
+    "name": "MarkIntelligence API",
+    "description": "Colección completa de endpoints del proyecto MarkIntelligence — Reto Ogilvy El Salvador.\n\nBase URL: http://127.0.0.1:8000/api\n\nPara usar las rutas protegidas:\n1. Ejecuta 'Login' o 'Register'\n2. El token se guarda automáticamente en la variable {{token}}\n3. Las demás peticiones lo usan en el header Authorization",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url",   "value": "http://127.0.0.1:8000/api", "type": "string" },
+    { "key": "token",      "value": "",                           "type": "string" },
+    { "key": "company_id", "value": "1",                         "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "🔐 Autenticación",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "  const json = pm.response.json();",
+                  "  pm.collectionVariables.set('token', json.token);",
+                  "  pm.collectionVariables.set('company_id', json.user.company_id || '1');",
+                  "  console.log('Token guardado:', json.token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept",       "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Alexander Granados\",\n  \"email\": \"alex@empresa.com\",\n  \"password\": \"contrasena123\",\n  \"password_confirmation\": \"contrasena123\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/register", "host": ["{{base_url}}"], "path": ["auth", "register"] },
+            "description": "Registra un nuevo usuario. El token se guarda automáticamente en {{token}}.\n\n✅ 201 — Registro exitoso\n❌ 422 — Email duplicado o validación fallida\n❌ 429 — Rate limit (5 req/min)"
+          }
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const json = pm.response.json();",
+                  "  pm.collectionVariables.set('token', json.token);",
+                  "  console.log('Token guardado:', json.token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept",       "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"alex@empresa.com\",\n  \"password\": \"contrasena123\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/login", "host": ["{{base_url}}"], "path": ["auth", "login"] },
+            "description": "Inicia sesión. El token se guarda automáticamente en {{token}}.\n\n✅ 200 — Login exitoso\n❌ 401 — Credenciales incorrectas\n❌ 429 — Rate limit"
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Accept",        "value": "application/json" }
+            ],
+            "url": { "raw": "{{base_url}}/auth/logout", "host": ["{{base_url}}"], "path": ["auth", "logout"] },
+            "description": "Cierra la sesión y elimina el token actual.\n\n✅ 200 — Logout exitoso\n❌ 401 — Token inválido"
+          }
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept",       "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"alex@empresa.com\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/forgot-password", "host": ["{{base_url}}"], "path": ["auth", "forgot-password"] },
+            "description": "Envía el link de reset al email.\n\n✅ 200 — Email enviado\n❌ 404 — Email no encontrado"
+          }
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept",       "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"TOKEN_DEL_EMAIL\",\n  \"email\": \"alex@empresa.com\",\n  \"password\": \"nuevaContrasena123\",\n  \"password_confirmation\": \"nuevaContrasena123\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/reset-password", "host": ["{{base_url}}"], "path": ["auth", "reset-password"] },
+            "description": "Cambia la contraseña con el token del email.\n\n✅ 200 — Contraseña cambiada\n❌ 400 — Token inválido o expirado"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🏢 Empresa (Company)",
+      "item": [
+        {
+          "name": "Listar Empresas",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Accept",        "value": "application/json" }
+            ],
+            "url": { "raw": "{{base_url}}/companies", "host": ["{{base_url}}"], "path": ["companies"] },
+            "description": "Lista todas las empresas del usuario autenticado."
+          }
+        },
+        {
+          "name": "Crear Empresa",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "  const json = pm.response.json();",
+                  "  pm.collectionVariables.set('company_id', String(json.company.id));",
+                  "  console.log('company_id guardado:', json.company.id);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Accept",        "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Mi Empresa SRL\",\n  \"industry\": \"Tecnología\",\n  \"country\": \"El Salvador\",\n  \"region\": \"San Salvador\",\n  \"keywords\": [\"ecommerce\", \"ia\", \"delivery\"]\n}"
+            },
+            "url": { "raw": "{{base_url}}/companies", "host": ["{{base_url}}"], "path": ["companies"] },
+            "description": "Crea una empresa. El company_id se guarda en {{company_id}}.\n\nIndustrias válidas: Tecnología, Alimentos, Comercio, Construcción, Servicios\nMáximo 20 keywords."
+          }
+        },
+        {
+          "name": "Ver Empresa",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Accept",        "value": "application/json" }
+            ],
+            "url": { "raw": "{{base_url}}/companies/{{company_id}}", "host": ["{{base_url}}"], "path": ["companies", "{{company_id}}"] }
+          }
+        },
+        {
+          "name": "Actualizar Empresa",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Accept",        "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"region\": \"Santa Ana\",\n  \"keywords\": [\"nuevo-keyword\", \"ecommerce\"]\n}"
+            },
+            "url": { "raw": "{{base_url}}/companies/{{company_id}}", "host": ["{{base_url}}"], "path": ["companies", "{{company_id}}"] },
+            "description": "Todos los campos son opcionales (actualización parcial)."
+          }
+        },
+        {
+          "name": "Eliminar Empresa",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Accept",        "value": "application/json" }
+            ],
+            "url": { "raw": "{{base_url}}/companies/{{company_id}}", "host": ["{{base_url}}"], "path": ["companies", "{{company_id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📊 Inteligencia",
+      "item": [
+        {
+          "name": "Mercado",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Accept",        "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/intelligence/market?company_id={{company_id}}&date_from=&date_to=",
+              "host": ["{{base_url}}"],
+              "path": ["intelligence", "market"],
+              "query": [
+                { "key": "company_id", "value": "{{company_id}}" },
+                { "key": "date_from",  "value": "", "description": "Opcional (Y-m-d)" },
+                { "key": "date_to",    "value": "", "description": "Opcional (Y-m-d)" }
+              ]
+            },
+            "description": "Retorna comparativa de precios, cuota de mercado y competidores.\n\nRate limit: 60 req/min por usuario."
+          }
+        },
+        {
+          "name": "Tendencias",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Accept",        "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/intelligence/trends?company_id={{company_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["intelligence", "trends"],
+              "query": [
+                { "key": "company_id", "value": "{{company_id}}" },
+                { "key": "date_from",  "value": "", "disabled": true },
+                { "key": "date_to",    "value": "", "disabled": true }
+              ]
+            },
+            "description": "Retorna keywords trending con análisis de sentimiento (positivo/neutral/negativo)."
+          }
+        },
+        {
+          "name": "Predicciones",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Accept",        "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/intelligence/predictions?company_id={{company_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["intelligence", "predictions"],
+              "query": [
+                { "key": "company_id", "value": "{{company_id}}" },
+                { "key": "date_from",  "value": "", "disabled": true },
+                { "key": "date_to",    "value": "", "disabled": true }
+              ]
+            },
+            "description": "Retorna predicciones con regresión lineal si hay datos históricos, o datos simulados si no."
+          }
+        },
+        {
+          "name": "Innovación",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Accept",        "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/intelligence/innovation?company_id={{company_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["intelligence", "innovation"],
+              "query": [
+                { "key": "company_id", "value": "{{company_id}}" }
+              ]
+            },
+            "description": "Retorna oportunidades de innovación, gaps de mercado y tecnologías emergentes."
+          }
+        },
+        {
+          "name": "Dashboard (KPIs consolidados)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Accept",        "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/dashboard?company_id={{company_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["dashboard"],
+              "query": [
+                { "key": "company_id", "value": "{{company_id}}" },
+                { "key": "date_from",  "value": "", "disabled": true },
+                { "key": "date_to",    "value": "", "disabled": true }
+              ]
+            },
+            "description": "Consolida KPIs de todos los módulos en una sola respuesta.\n\nRate limit: 30 req/min por usuario."
+          }
+        }
+      ]
+    }
+  ]
+}
