@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
 {
-    // registro de usuarios nuevos
+    // registramos el nuevo usuario que vamos a crear
     public function register(RegisterRequest $request)
     {
-        // los datos ya vienen validados y sanitizados por el FormRequest
+        // los datos ya vienen validados por el FormRequest
         $user = User::create([
             'name'     => $request->name,
             'email'    => $request->email,
@@ -28,7 +28,7 @@ class AuthController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            'message' => 'Usuario registrado exitosamente',
+            'message' => 'El usuario se ha registrado correctamente',
             'user'    => [
                 'id'    => $user->id,
                 'name'  => $user->name,
@@ -39,7 +39,7 @@ class AuthController extends Controller
         ], 201);
     }
 
-    // inicio de sesion
+    // con esta función hacemos validamos el inicio de sesión y se crea el token para el usuario autenticado
     public function login(LoginRequest $request)
     {
         if (!Auth::attempt($request->only('email', 'password'))) {
@@ -52,7 +52,7 @@ class AuthController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            'message' => 'Inicio de sesion exitoso',
+            'message' => 'Ha iniciado sesión correctamente',
             'user'    => [
                 'id'    => $user->id,
                 'name'  => $user->name,
@@ -63,35 +63,35 @@ class AuthController extends Controller
         ], 200);
     }
 
-    // cierre de sesion: elimina solo el token actual
+    // cierre de sesión elimina solo el token actual
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
-            'message' => 'Sesion cerrada exitosamente',
+            'message' => 'Sesión cerrada exitosamente',
         ], 200);
     }
 
-    // paso 1 del reset: manda el link al email
+    // paso 1 del reset manda el link al email para verificar que es el usuario autentico
     public function forgotPassword(ForgotPasswordRequest $request)
     {
         $status = Password::sendResetLink(
             $request->only('email')
         );
-
+        //Si el correo es el correcto entonces le caera un link para restablecer su contraseña
         if ($status === Password::RESET_LINK_SENT) {
             return response()->json([
-                'message' => 'Te enviamos un link para restablecer tu contrasena'
+                'message' => 'Te enviamos un link para que puedas restablecer la contraseña'
             ], 200);
         }
-
+        //Si el correo no es el correcto entonces le caerá un error
         return response()->json([
-            'message' => 'No encontramos una cuenta con ese email'
+            'message' => 'No se encontró una cuenta con ese email'
         ], 404);
     }
 
-    // paso 2 del reset: cambia la contrasena con el token del email
+    // paso 2 del reset cambia la contraseña con el token del email y se genera uno nuevo
     public function resetPassword(ResetPasswordRequest $request)
     {
         $status = Password::reset(
@@ -101,19 +101,19 @@ class AuthController extends Controller
                     'password' => Hash::make($password)
                 ])->save();
 
-                // borramos todos los tokens viejos por seguridad
+                // borramos todos los tokens viejos por seguridad y que nadie pueda tener acceso a la cuenta
                 $user->tokens()->delete();
             }
         );
-
+        //Si el token es correcto entonces se restablece la contraseña
         if ($status === Password::PASSWORD_RESET) {
             return response()->json([
-                'message' => 'Contrasena actualizada exitosamente'
+                'message' => 'Contraseña ha sido reestablecida'
             ], 200);
         }
-
+        //Si el token es incorrecto entonces le caerá un error
         return response()->json([
-            'message' => 'El token es invalido o ya expiro'
+            'message' => 'El token es invalido o ya termino su tiempo maximo de espera'
         ], 400);
     }
 }
