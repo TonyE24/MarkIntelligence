@@ -34,11 +34,11 @@ const IconClose = () => (
 )
 
 const navItems = [
-  { to: '/dashboard',              label: 'Inicio',       icon: <IconHome />,        end: true },
-  { to: '/dashboard/market',       label: 'Mercado',      icon: <IconMarket /> },
-  { to: '/dashboard/trends',       label: 'Tendencias',   icon: <IconTrends /> },
-  { to: '/dashboard/predictions',  label: 'Predicciones', icon: <IconPredictions /> },
-  { to: '/dashboard/innovation',   label: 'Innovación',   icon: <IconInnovation /> },
+  { to: '/dashboard', label: 'Inicio', icon: <IconHome />, end: true },
+  { to: '/dashboard/market', label: 'Mercado', icon: <IconMarket /> },
+  { to: '/dashboard/trends', label: 'Tendencias', icon: <IconTrends /> },
+  { to: '/dashboard/predictions', label: 'Predicciones', icon: <IconPredictions /> },
+  { to: '/dashboard/innovation', label: 'Innovación', icon: <IconInnovation /> },
 ]
 
 interface SidebarProps {
@@ -95,8 +95,8 @@ function Sidebar({ open, onClose }: SidebarProps) {
               MI
             </div>
             <div>
-              <p className="font-bold text-sm leading-none">MarketIntelligence</p>
-              <p className="text-gray-400 text-xs mt-0.5">Para PYMEs</p>
+              <p className="font-black text-base leading-none">MarketIntelligence</p>
+              <p className="text-gray-400 text-base mt-0.5">Para PYMEs</p>
             </div>
           </div>
           {/* botón X visible solo en mobile */}
@@ -118,10 +118,9 @@ function Sidebar({ open, onClose }: SidebarProps) {
               end={item.end}
               onClick={handleNavClick}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 ${
-                  isActive
-                    ? 'bg-green-600 text-white shadow-lg shadow-indigo-600/30'
-                    : 'text-blue-800 hover:bg-gray-800 hover:text-white'
+                `flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 ${isActive
+                  ? 'bg-green-600 text-white shadow-lg shadow-indigo-600/30'
+                  : 'text-green-500 hover:bg-gray-800 hover:text-white'
                 }`
               }
             >
