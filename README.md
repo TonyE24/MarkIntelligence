@@ -31,11 +31,13 @@ API disponible en: http://localhost:8000
 <img width="2133" height="1038" alt="Frontend" src="https://github.com/user-attachments/assets/1d79fad4-5ebc-4d30-88da-45cd918673f8" />
 Aplicación disponible en: http://localhost:5173
 
-## 📚 Documentación
+## 📚 Documentación Interactiva
 
-Ver carpeta `docs/` para:
+Toda la documentación técnica y de negocio vive en la carpeta `/docs`:
 
-- Diagramas de arquitectura
-- Documentación de API
-- Plan de implementación
-- Presentación del proyecto
+- ⚙️ **[Guía de Instalación Local](docs/INSTALLATION.md)** - Cómo levantar el proyecto de cero.
+- 🚀 **[Guía de Deploy (Producción)](docs/DEPLOYMENT.md)** - Cómo subir a Vercel y Railway.
+- 🔌 **[Documentación de API](docs/API_DOCUMENTATION.md)** - Endpoints, Headers y ejemplos.
+- 📊 **[Esquema de Presentación](docs/PRESENTATION_OUTLINE.md)** - Pitch estructurado para el Reto Ogilvy.
+- 💡 **[Estrategia de APIs](docs/API_STRATEGY.md)** y **[Decisiones Técnicas](docs/TECHNICAL_DECISIONS.md)**.
+- 🏗️ **[Arquitectura](docs/ARCHITECTURE.md)** y **[Base de Datos](docs/DATABASE_SCHEMA.md)**.
