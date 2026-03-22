@@ -6,12 +6,12 @@ import api from '../services/api'
 function CompanySetupPage() {
   const navigate = useNavigate()
 
-  // controles para el formulario multi-pasos
+  // TODO: Refactorizar esto a un useMultiStepForm hook si agregamos más pasos
   const [step, setStep] = useState(1)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  // aqui guardamos todos los datos que el usuario va metiendo
+  // estado principal del form
   const [form, setForm] = useState({
     name: '',
     industry: '',
@@ -20,7 +20,6 @@ function CompanySetupPage() {
     keywords: [] as string[],
   })
 
-  // auxiliar para manejar las keywords (las guardamos como array)
   const [currentKeyword, setCurrentKeyword] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -47,9 +46,7 @@ function CompanySetupPage() {
     setError('')
 
     try {
-      // mandamos los datos al endpoint que creamos en el backend
       await api.post('/companies', form)
-      // si todo sale bien, lo mandamos al dashboard
       navigate('/dashboard')
     } catch (err) {
       if (axios.isAxiosError(err)) {

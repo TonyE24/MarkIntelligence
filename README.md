@@ -1,21 +1,29 @@
 # Plataforma de Inteligencia de Mercados - Reto Ogilvy
 
-MVP de plataforma de análisis de mercado para PYMEs, desarrollado como parte del reto de pasantía de Ogilvy El Salvador.
+Este es el repositorio del MVP que construí para el reto de pasantía de Ogilvy El Salvador. La plataforma es un sistema de análisis de mercado enfocado en ayudar a PYMEs a tomar mejores decisiones basadas en datos. 
+
+Durante el desarrollo, me enfoqué mucho en que el dashboard se sintiera fluido y en tener una API sólida por detrás.
+
+## 🛠️ Retos y Decisiones Técnicas
+
+- **Setup del Monorepo (Casi):** Decidí mantener Backend y Frontend en la misma raíz para facilidad de desarrollo, pero se deployan por separado.
+- **Gráficos Reactivos:** Usé Recharts porque necesitaba customizar bastante los tooltips, y era la que mejor rendimiento me daba con el *mock data* pesado.
+- **Autenticación:** Implementé Laravel Sanctum por su simplicidad con SPAs. Costó un poco alinear los headers de CORS con Vite, pero quedó estable.
 
 ## 🚀 Stack Tecnológico
 
 - **Frontend:** React + TypeScript + Vite + Tailwind CSS
 - **Backend:** Laravel + MySQL
-- **Autenticación:** Laravel Sanctum (API Tokens)
+- **Autenticación:** Laravel Sanctum (Tokens JWT-like para API)
 - **Visualizaciones:** Recharts
 - **Navegación:** React Router v6
 
 ## 📋 Módulos de Inteligencia
 
-1. **Inteligencia de Mercado** - Comparativa de precios y cuota de mercado
-2. **Inteligencia de Tendencias** - Análisis de keywords y sentimiento
-3. **Inteligencia de Predicción** - Proyecciones de ventas (regresión lineal)
-4. **Inteligencia de Innovación** - Detección de oportunidades
+- **Inteligencia de Mercado** - Comparativa de precios y cuota de mercado
+- **Inteligencia de Tendencias** - Análisis de keywords y sentimiento
+- **Inteligencia de Predicción** - Proyecciones de ventas (regresión lineal manual)
+- **Inteligencia de Innovación** - Detección de oportunidades emergentes
 
 ## 🏗️ Estructura del Proyecto
 

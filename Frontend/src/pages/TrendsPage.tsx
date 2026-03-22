@@ -30,7 +30,7 @@ function TrendsPage() {
 
   const trends = data?.trends || data?.trend_analysis || []
 
-  // calculamos el sentimiento promedio de todos los keywords
+  // TODO: Mover este cálculo al backend para no sobrecargar el cliente si el array crece mucho
   const avgSentiment = trends.length > 0 ? {
     positive: Math.round(trends.reduce((s: number, t: any) => s + t.sentiment?.positive, 0) / trends.length),
     neutral: Math.round(trends.reduce((s: number, t: any) => s + t.sentiment?.neutral, 0) / trends.length),
@@ -58,7 +58,7 @@ function TrendsPage() {
 
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
               <h2 className="font-semibold text-gray-700 mb-2">Sentimiento General</h2>
-              <p className="text-xs text-gray-400 mb-3">Promedio de todos los keywords</p>
+              <p className="text-xs text-gray-400 mb-3">Estadística general de búsquedas</p>
               <SentimentPieChart
                 positive={avgSentiment.positive}
                 neutral={avgSentiment.neutral}
