@@ -94,7 +94,6 @@ class DataProcessingService
         $min = min($data);
         $max = max($data);
 
-        // si todos los valores son iguales, evitamos division por cero
         if ($max === $min) {
             return array_fill(0, count($data), 0.0);
         }

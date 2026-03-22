@@ -19,13 +19,13 @@ const TrendsPage         = lazy(() => import('./pages/TrendsPage'))
 const PredictionsPage    = lazy(() => import('./pages/PredictionsPage'))
 const InnovationPage     = lazy(() => import('./pages/InnovationPage'))
 
-// componente que protege rutas: si no hay token manda al login
+// TODO: Mover PrivateRoute a su propio archivo/hook cuando el auth se vuelva más complejo
 const PrivateRoute = ({ children }: { children: ReactNode }) => {
   const token = localStorage.getItem('token')
   return token ? <>{children}</> : <Navigate to="/login" />
 }
 
-// fallback del Suspense: se muestra mientras la página lazy carga
+// fallback mientras lazy load hace lo suyo
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-gray-50">
     <LoadingSpinner size="lg" color="indigo" label="Cargando..." />
@@ -38,13 +38,10 @@ function App() {
       {/* ToastContainer montado una sola vez globalmente (Issue #35) */}
       <ToastContainer />
 
-      {/*
-        Suspense envuelve todas las rutas para manejar el lazy loading.
-        Mientras una página carga, muestra el PageLoader.
-      */}
+      {/* Suspense maneja los imports dinámicos de las páginas */}
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          {/* ruta raiz */}
+          {/* redirección inicial */}
           <Route path="/" element={<Navigate to="/login" />} />
 
           {/* rutas públicas */}

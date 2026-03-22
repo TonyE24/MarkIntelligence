@@ -9,7 +9,6 @@ const getCompanyId = () => {
   return user.company_id || 1
 }
 
-// colores y estilos segun el impacto
 const impactStyle: Record<string, string> = {
   'High': 'bg-red-50 text-red-600 border-red-100',
   'Alto': 'bg-red-50 text-red-600 border-red-100',
@@ -19,7 +18,6 @@ const impactStyle: Record<string, string> = {
   'Bajo': 'bg-green-50 text-green-600 border-green-100',
 }
 
-// icono segun el tipo de oportunidad
 const typeIcon: Record<string, string> = {
   opportunity: '🎯',
   gap: '🕳️',
@@ -51,7 +49,6 @@ function InnovationPage() {
 
   const opportunities = data?.innovation_opportunities || []
 
-  // agrupamos por tipo para mostrar cada seccion por separado
   const groups: Record<string, any[]> = {}
   opportunities.forEach((op: any) => {
     const key = op.type || 'opportunity'
@@ -80,7 +77,6 @@ function InnovationPage() {
 
       {!loading && (
         <div className="space-y-6">
-          {/* si no tiene tipos definidos (mock data) los mostramos como grid flat */}
           {Object.keys(groups).length === 0 && opportunities.length > 0
             ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -108,7 +104,6 @@ function InnovationPage() {
   )
 }
 
-// componente de tarjeta reutilizable
 function OpportunityCard({ op }: { op: any }) {
   const impact = op.impact || 'Medium'
   return (

@@ -13,8 +13,7 @@ class PredictionSeeder extends Seeder
      */
     public function run(): void
     {
-        // buscamos la primera empresa (la que creamos en el seeder anterior)
-        $company = Company::where('name', 'Tecnología Avanzada S.A.')->first();
+        $company = Company::where('name', 'Tech Solutions El Salvador S.A. de C.V.')->first();
 
         if ($company) {
             $data = [

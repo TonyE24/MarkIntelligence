@@ -8,7 +8,6 @@ const getCompanyId = () => {
   return user.company_id || 1
 }
 
-// colores y estilos para cada KPI
 const kpiConfig: Record<string, { icon: string; color: string; bg: string }> = {
   market_share:         { icon: '📊', color: 'text-indigo-600', bg: 'bg-indigo-50' },
   sentiment:            { icon: '💬', color: 'text-purple-600', bg: 'bg-purple-50' },
@@ -53,7 +52,6 @@ function DashboardPage() {
 
   return (
     <DashboardLayout>
-      {/* saludo */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-800">
           ¡Bienvenido, {user.name?.split(' ')[0] || 'Usuario'}! 👋
@@ -61,7 +59,6 @@ function DashboardPage() {
         <p className="text-gray-500 mt-1 text-sm">Resumen de inteligencia para tu empresa.</p>
       </div>
 
-      {/* filtros de fecha */}
       <form onSubmit={handleFilter} className="flex flex-wrap gap-3 items-end mb-6 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
         <div>
           <label className="block text-xs font-medium text-gray-500 mb-1">Desde</label>
@@ -96,7 +93,6 @@ function DashboardPage() {
         </button>
       </form>
 
-      {/* grid de KPIs */}
       {loading ? (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           {[...Array(4)].map((_, i) => (
@@ -120,7 +116,6 @@ function DashboardPage() {
         </div>
       )}
 
-      {/* acceso rapido a modulos */}
       <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Módulos de Inteligencia</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         {modules.map((m) => (
@@ -140,7 +135,6 @@ function DashboardPage() {
         ))}
       </div>
 
-      {/* banner de configuracion */}
       <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 flex items-center justify-between">
         <div>
           <p className="font-semibold text-indigo-800 text-sm">¿Recién empezando?</p>

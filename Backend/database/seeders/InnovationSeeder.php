@@ -13,7 +13,7 @@ class InnovationSeeder extends Seeder
      */
     public function run(): void
     {
-        $company = Company::where('name', 'Tecnología Avanzada S.A.')->first();
+        $company = Company::where('name', 'Tech Solutions El Salvador S.A. de C.V.')->first();
 
         if ($company) {
             $opportunities = [

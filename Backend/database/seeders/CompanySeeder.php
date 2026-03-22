@@ -14,7 +14,7 @@ class CompanySeeder extends Seeder
      */
     public function run(): void
     {
-        // creamos un usuario de prueba si no existe
+        // Admin maestro (ojo: cambiar pass en prod)
         $user = User::firstOrCreate(
             ['email' => 'admin@test.com'],
             [
@@ -24,22 +24,22 @@ class CompanySeeder extends Seeder
             ]
         );
 
-        // agregamos una empresa de ejemplo
+        // Empresas mock para probar el dashboard
         Company::create([
-            'name' => 'Tecnología Avanzada S.A.',
+            'name' => 'Tech Solutions El Salvador S.A. de C.V.',
             'industry' => 'Tecnología',
             'country' => 'El Salvador',
             'region' => 'San Salvador',
-            'keywords' => ['software', 'cloud', 'ai'],
+            'keywords' => ['software', 'cloud', 'ai', 'desarrollo web'],
             'user_id' => $user->id,
         ]);
 
         Company::create([
-            'name' => 'Café del Valle',
+            'name' => 'Cafetalera La Esperanza',
             'industry' => 'Alimentos',
             'country' => 'El Salvador',
             'region' => 'Santa Ana',
-            'keywords' => ['café', 'exportación', 'orgánico'],
+            'keywords' => ['café de altura', 'exportación', 'orgánico'],
             'user_id' => $user->id,
         ]);
     }
