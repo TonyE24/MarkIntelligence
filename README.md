@@ -26,20 +26,25 @@ Durante el desarrollo, me enfoqué mucho en que el dashboard se sintiera fluido 
 - **Inteligencia de Innovación** - Detección de oportunidades emergentes
 
 ## 🏗️ Estructura del Proyecto
+<img width="878" height="2328" alt="proyectocompleto" src="https://github.com/user-attachments/assets/668d80d6-b9ac-4185-837e-24aeb3091123" />
 
 ## ⚡ Inicio Rápido
 
 ### Backend (Laravel)
 
-<img width="1485" height="1398" alt="Backend" src="https://github.com/user-attachments/assets/06c5ad03-3d53-477a-968b-618ede496434" />
+<img width="849" height="1275" alt="Backend" src="https://github.com/user-attachments/assets/19ac6057-4305-41fc-9483-d2d53791681d" />
 
 API disponible en: http://localhost:8000
 
 ### Frontend (React)
-<img width="2133" height="1038" alt="Frontend" src="https://github.com/user-attachments/assets/1d79fad4-5ebc-4d30-88da-45cd918673f8" />
+
+<img width="878" height="984" alt="Frontend" src="https://github.com/user-attachments/assets/6a5d8105-4ebc-447a-9107-5bebbffd660a" />
+
 Aplicación disponible en: http://localhost:5173
 
 ## 📚 Documentación Interactiva
+
+<img width="753" height="424" alt="docs" src="https://github.com/user-attachments/assets/a7adb875-701a-40a0-9dec-e3c4c6f4712a" />
 
 Toda la documentación técnica y de negocio vive en la carpeta `/docs`:
 
