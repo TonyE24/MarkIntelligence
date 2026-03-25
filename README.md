@@ -40,7 +40,8 @@ API disponible en: http://localhost:8000
 
 ### Frontend (React)
 
-<img width="878" height="984" alt="Frontend" src="https://github.com/user-attachments/assets/6a5d8105-4ebc-447a-9107-5bebbffd660a" />
+<img width="972" height="1678" alt="Frontend" src="https://github.com/user-attachments/assets/124ad007-d104-4a02-bb56-1ba6b04d2817" />
+
 
 Aplicación disponible en: http://localhost:5173
 
