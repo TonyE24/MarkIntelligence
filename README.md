@@ -26,7 +26,8 @@ Durante el desarrollo, me enfoqué mucho en que el dashboard se sintiera fluido 
 - **Inteligencia de Innovación** - Detección de oportunidades emergentes
 
 ## 🏗️ Estructura del Proyecto
-<img width="878" height="2328" alt="proyectocompleto" src="https://github.com/user-attachments/assets/668d80d6-b9ac-4185-837e-24aeb3091123" />
+<img width="878" height="916" alt="proyectoestructura" src="https://github.com/user-attachments/assets/e953f07e-5082-42ce-bbcd-9ebbd45d4e7d" />
+
 
 ## ⚡ Inicio Rápido
 
