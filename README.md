@@ -1,14 +1,14 @@
 # Plataforma de Inteligencia de Mercados - Reto Ogilvy
 
-Este es el repositorio del MVP que construí para el reto de pasantía de Ogilvy El Salvador. La plataforma es un sistema de análisis de mercado enfocado en ayudar a PYMEs a tomar mejores decisiones basadas en datos. 
+Este es el repositorio del MVP que construí para el reto de pasantía de Ogilvy El Salvador esta es una plataforma que implementa sistema de análisis de mercado enfocado en ayudar a PYMEs a tomar mejores decisiones basadas en datos. 
 
 Durante el desarrollo, me enfoqué mucho en que el dashboard se sintiera fluido y en tener una API sólida por detrás.
 
 ## 🛠️ Retos y Decisiones Técnicas
 
-- **Setup del Monorepo (Casi):** Decidí mantener Backend y Frontend en la misma raíz para facilidad de desarrollo, pero se deployan por separado.
-- **Gráficos Reactivos:** Usé Recharts porque necesitaba customizar bastante los tooltips, y era la que mejor rendimiento me daba con el *mock data* pesado.
-- **Autenticación:** Implementé Laravel Sanctum por su simplicidad con SPAs. Costó un poco alinear los headers de CORS con Vite, pero quedó estable.
+- **Setup del Monorepo** Decidí mantener Backend y Frontend en la misma raíz para facilidad de desarrollo, pero cada uno se despliegan por separado.
+- **Gráficos Reactivos:** Usé Recharts porque necesitaba customizar bastante los tooltips y era la que mejor rendimiento me daba con el *mock data* pesado.
+- **Autenticación:** Implementé Laravel Sanctum por su simplicidad con SPAs me costó un poco alinear los headers de CORS con Vite, pero quedó estable.
 
 ## 🚀 Stack Tecnológico
 
