@@ -36,4 +36,10 @@ Frontend/dist/
 coverage/
 *.coverage
 
-# Documentation
+# Internal documentation (not for submission)
+internal/
+
+# Documentation (no necesarios para entrega)
+docs/PROJECT_STRUCTURE.md
+docs/BUSINESS_ANALYSIS.md
+docs/PRESENTATION_OUTLINE.md
