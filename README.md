@@ -46,6 +46,5 @@ Toda la documentación técnica y de negocio vive en la carpeta `/docs`:
 - ⚙️ **[Guía de Instalación Local](docs/INSTALLATION.md)** - Cómo levantar el proyecto de cero.
 - 🚀 **[Guía de Deploy (Producción)](docs/DEPLOYMENT.md)** - Cómo subir a Vercel y Railway.
 - 🔌 **[Documentación de API](docs/API_DOCUMENTATION.md)** - Endpoints, Headers y ejemplos.
-- 📊 **[Esquema de Presentación](docs/PRESENTATION_OUTLINE.md)** - Pitch estructurado para el Reto Ogilvy.
+- 📊 **[Arquitectura](docs/ARCHITECTURE.md)** y **[Base de Datos](docs/DATABASE_SCHEMA.md)** - Diagramas técnicos.
 - 💡 **[Estrategia de APIs](docs/API_STRATEGY.md)** y **[Decisiones Técnicas](docs/TECHNICAL_DECISIONS.md)**.
-- 🏗️ **[Arquitectura](docs/ARCHITECTURE.md)** y **[Base de Datos](docs/DATABASE_SCHEMA.md)**.

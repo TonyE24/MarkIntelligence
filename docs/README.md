@@ -67,13 +67,6 @@ Estos documentos proporcionan información adicional valiosa:
 - Conexión a base de datos en producción
 - Verificación del despliegue
 
-### 📁 [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)
-**Estructura detallada del proyecto**
-- Árbol de directorios del Backend (Laravel)
-- Árbol de directorios del Frontend (React)
-- Diagramas de flujo de desarrollo
-- Organización de módulos y componentes
-- Convenciones de código
 
 ---
 
@@ -86,7 +79,6 @@ Si eres un evaluador o revisor técnico, te recomendamos leer los documentos en 
 3. **`DATABASE_SCHEMA.md`** → Revisar el modelo de datos
 4. **`INSTALLATION.md`** → Levantar el proyecto localmente
 5. **`API_DOCUMENTATION.md`** → Probar los endpoints
-6. **`PROJECT_STRUCTURE.md`** → Navegar el código fuente
 
 ---
 
