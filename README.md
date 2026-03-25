@@ -33,7 +33,8 @@ Durante el desarrollo, me enfoqué mucho en que el dashboard se sintiera fluido 
 
 ### Backend (Laravel)
 
-<img width="849" height="1275" alt="Backend" src="https://github.com/user-attachments/assets/19ac6057-4305-41fc-9483-d2d53791681d" />
+<img width="981" height="1521" alt="Backend" src="https://github.com/user-attachments/assets/0408d010-8720-47f2-b7c7-51e8eab8cf6c" />
+
 
 API disponible en: http://localhost:8000
 
