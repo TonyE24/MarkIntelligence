@@ -91,6 +91,24 @@ function LoginPage() {
           >
             {loading ? 'Ingresando...' : 'Iniciar sesión'}
           </button>
+
+          <div className="relative my-4 flex items-center justify-center">
+            <div className="border-t border-gray-300 w-full"></div>
+            <span className="bg-blue-200 px-3 text-xs text-gray-500 font-semibold uppercase">O prueba directamente</span>
+            <div className="border-t border-gray-300 w-full"></div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => {
+              localStorage.setItem('token', 'demo-token-ogilvy-2026')
+              localStorage.setItem('user', JSON.stringify({ name: 'Evaluador Demo', email: 'evaluador@ogilvy.com' }))
+              navigate('/dashboard')
+            }}
+            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-lg text-base font-bold transition shadow-md flex items-center justify-center gap-2"
+          >
+            🚀 Acceder en Modo Demo (Sin Backend)
+          </button>
         </form>
 
         <p className="text-center text-lg text-gray-800 mt-6">
