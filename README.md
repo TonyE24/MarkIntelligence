@@ -1,4 +1,4 @@
-# 📊 MarkIntelligence – Plataforma de Inteligencia de Mercados
+# MarkIntelligence – Plataforma de Inteligencia de Mercados
 
 [![Live Demo](https://img.shields.io/badge/Demo-Live%20Vercel-brightgreen?style=for-the-badge&logo=vercel)](https://mark-intelligence.vercel.app/)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-MarkIntelligence-181717?style=for-the-badge&logo=github)](https://github.com/TonyE24/MarkIntelligence)
@@ -10,26 +10,26 @@ Plataforma Web Full-Stack de analítica de mercado y soporte a decisiones de neg
 
 ---
 
-## 🌐 Enlaces Rápidos
+## Enlaces Rápidos
 
-* 🔗 **Demo en Vivo (Frontend):** [mark-intelligence.vercel.app](https://mark-intelligence.vercel.app/)
-* 📦 **Repositorio GitHub:** [github.com/TonyE24/MarkIntelligence](https://github.com/TonyE24/MarkIntelligence)
-* 📚 **Documentación Técnica:** [Carpeta /docs](docs/README.md)
+* **Demo en Vivo (Frontend):** [mark-intelligence.vercel.app](https://mark-intelligence.vercel.app/)
+* **Repositorio GitHub:** [github.com/TonyE24/MarkIntelligence](https://github.com/TonyE24/MarkIntelligence)
+* **Documentación Técnica:** [Carpeta /docs](docs/README.md)
 
 ---
 
-## ✨ Características Principales
+## Características Principales
 
 La plataforma implementa 4 módulos de analítica estratégica:
 
-1. 📈 **Inteligencia de Mercado:** Comparativas de precios, posicionamiento competitivo y cuotas de mercado.
-2. 🔥 **Inteligencia de Tendencias:** Análisis de volumen de búsqueda de palabras clave y análisis de sentimiento.
-3. 🔮 **Inteligencia de Predicción:** Algoritmos de proyección de ventas basados en modelos de regresión lineal.
-4. 💡 **Inteligencia de Innovación:** Identificación dinámica de nichos y oportunidades emergentes en el mercado.
+1. **Inteligencia de Mercado:** Comparativas de precios, posicionamiento competitivo y cuotas de mercado.
+2. **Inteligencia de Tendencias:** Análisis de volumen de búsqueda de palabras clave y análisis de sentimiento.
+3. **Inteligencia de Predicción:** Algoritmos de proyección de ventas basados en modelos de regresión lineal.
+4. **Inteligencia de Innovación:** Identificación dinámica de nichos y oportunidades emergentes en el mercado.
 
 ---
 
-## 🛠️ Stack Tecnológico & Arquitectura
+## Stack Tecnológico & Arquitectura
 
 ### **Frontend (SPA)**
 - **Framework:** React 18 + TypeScript + Vite 5
@@ -47,7 +47,7 @@ La plataforma implementa 4 módulos de analítica estratégica:
 
 ---
 
-## 🏗️ Estructura del Monorepo
+## Estructura del Monorepo
 
 ```
 MarkIntelligence/
@@ -63,7 +63,7 @@ MarkIntelligence/
 
 ---
 
-## ⚡ Inicio Rápido en Desarrollo Local
+## Inicio Rápido en Desarrollo Local
 
 ### 1. Clonar el repositorio
 ```bash
@@ -92,16 +92,16 @@ npm run dev
 
 ---
 
-## 📚 Documentación Técnica Completa
+## Documentación Técnica Completa
 
 Toda la documentación técnica del sistema se encuentra organizada en la carpeta [`/docs`](docs/README.md):
 
-* 🏗️ **[Arquitectura del Sistema](docs/ARCHITECTURE.md):** Diagrama de capas y comunicación desacoplada.
-* 💾 **[Esquema de Base de Datos](docs/DATABASE_SCHEMA.md):** Modelo ER, tablas y relaciones.
-* 🔌 **[Documentación de API](docs/API_DOCUMENTATION.md):** Especificación de endpoints, headers y formatos JSON.
-* 🔧 **[Decisiones Técnicas](docs/TECHNICAL_DECISIONS.md):** Justificación del stack, trade-offs y patrones de diseño.
-* ⚙️ **[Guía de Instalación Local](docs/INSTALLATION.md):** Requisitos y troubleshooting.
-* 🚀 **[Guía de Despliegue](docs/DEPLOYMENT.md):** Configuración en Vercel y Railway.
+* **[Arquitectura del Sistema](docs/ARCHITECTURE.md):** Diagrama de capas y comunicación desacoplada.
+* **[Esquema de Base de Datos](docs/DATABASE_SCHEMA.md):** Modelo ER, tablas y relaciones.
+* **[Documentación de API](docs/API_DOCUMENTATION.md):** Especificación de endpoints, headers y formatos JSON.
+* **[Decisiones Técnicas](docs/TECHNICAL_DECISIONS.md):** Justificación del stack, trade-offs y patrones de diseño.
+* **[Guía de Instalación Local](docs/INSTALLATION.md):** Requisitos y troubleshooting.
+* **[Guía de Despliegue](docs/DEPLOYMENT.md):** Configuración en Vercel y Railway.
 
 ---
 
