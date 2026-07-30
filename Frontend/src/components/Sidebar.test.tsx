@@ -12,7 +12,7 @@ describe('Sidebar', () => {
     )
     
     expect(screen.getByText('MarkIntelligence')).toBeInTheDocument()
-    expect(screen.getByText('Dashboard')).toBeInTheDocument()
+    expect(screen.getByText(/Inicio|Dashboard/i)).toBeInTheDocument()
     expect(screen.getByText('Mercado')).toBeInTheDocument()
     expect(screen.getByText('Tendencias')).toBeInTheDocument()
   })

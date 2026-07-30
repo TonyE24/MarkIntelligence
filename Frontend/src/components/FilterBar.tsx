@@ -45,7 +45,7 @@ function FilterBar({ onFilter, loading = false }: FilterBarProps) {
 
       {/* desde */}
       <div className="flex flex-col gap-1">
-        <label className="text-xs font-medium text-gray-400">Desde</label>
+        <label htmlFor="filter-date-from" className="text-xs font-medium text-gray-400">Desde</label>
         <input
           id="filter-date-from"
           type="date"
@@ -57,7 +57,7 @@ function FilterBar({ onFilter, loading = false }: FilterBarProps) {
 
       {/* hasta */}
       <div className="flex flex-col gap-1">
-        <label className="text-xs font-medium text-gray-400">Hasta</label>
+        <label htmlFor="filter-date-to" className="text-xs font-medium text-gray-400">Hasta</label>
         <input
           id="filter-date-to"
           type="date"

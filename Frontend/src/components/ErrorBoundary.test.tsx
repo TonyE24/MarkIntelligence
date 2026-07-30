@@ -19,7 +19,7 @@ describe('ErrorBoundary', () => {
     )
     
     // Verificamos que el boundary renderizó su mensaje genérico o título
-    expect(screen.getByText(/Algo salió mal|intentar de nuevo/i)).toBeInTheDocument()
+    expect(screen.getByText('Algo salió mal')).toBeInTheDocument()
     
     consoleSpy.mockRestore()
   })

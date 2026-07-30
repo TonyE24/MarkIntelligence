@@ -1,56 +1,111 @@
-# Plataforma de Inteligencia de Mercados - Reto Ogilvy
+# 📊 MarkIntelligence – Plataforma de Inteligencia de Mercados
 
-Este es el repositorio del MVP que construí para el reto de pasantía de Ogilvy El Salvador. La plataforma es un sistema de análisis de mercado enfocado en ayudar a PYMEs a tomar mejores decisiones basadas en datos. 
+[![Live Demo](https://img.shields.io/badge/Demo-Live%20Vercel-brightgreen?style=for-the-badge&logo=vercel)](https://mark-intelligence.vercel.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-MarkIntelligence-181717?style=for-the-badge&logo=github)](https://github.com/TonyE24/MarkIntelligence)
+[![React](https://img.shields.io/badge/Frontend-React%2018%20%2B%20TS-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![Laravel](https://img.shields.io/badge/Backend-Laravel%2011-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com/)
+[![MySQL](https://img.shields.io/badge/Database-MySQL-4479A1?style=for-the-badge&logo=mysql)](https://www.mysql.com/)
 
-Durante el desarrollo, me enfoqué mucho en que el dashboard se sintiera fluido y en tener una API sólida por detrás.
+Plataforma Web Full-Stack de analítica de mercado y soporte a decisiones de negocio para PYMEs, desarrollada como proyecto principal para el **Reto Ogilvy El Salvador**. El sistema combina un dashboard interactivo de alto rendimiento con una API RESTful desacoplada y robusta.
 
-## 🛠️ Retos y Decisiones Técnicas
+---
 
-- **Setup del Monorepo (Casi):** Decidí mantener Backend y Frontend en la misma raíz para facilidad de desarrollo, pero se deployan por separado.
-- **Gráficos Reactivos:** Usé Recharts porque necesitaba customizar bastante los tooltips, y era la que mejor rendimiento me daba con el *mock data* pesado.
-- **Autenticación:** Implementé Laravel Sanctum por su simplicidad con SPAs. Costó un poco alinear los headers de CORS con Vite, pero quedó estable.
+## 🌐 Enlaces Rápidos
 
-## 🚀 Stack Tecnológico
+* 🔗 **Demo en Vivo (Frontend):** [mark-intelligence.vercel.app](https://mark-intelligence.vercel.app/)
+* 📦 **Repositorio GitHub:** [github.com/TonyE24/MarkIntelligence](https://github.com/TonyE24/MarkIntelligence)
+* 📚 **Documentación Técnica:** [Carpeta /docs](docs/README.md)
 
-- **Frontend:** React + TypeScript + Vite + Tailwind CSS
-- **Backend:** Laravel + MySQL
-- **Autenticación:** Laravel Sanctum (Tokens JWT-like para API)
-- **Visualizaciones:** Recharts
-- **Navegación:** React Router v6
+---
 
-## 📋 Módulos de Inteligencia
+## ✨ Características Principales
 
-- **Inteligencia de Mercado** - Comparativa de precios y cuota de mercado
-- **Inteligencia de Tendencias** - Análisis de keywords y sentimiento
-- **Inteligencia de Predicción** - Proyecciones de ventas (regresión lineal manual)
-- **Inteligencia de Innovación** - Detección de oportunidades emergentes
+La plataforma implementa 4 módulos de analítica estratégica:
 
-## 🏗️ Estructura del Proyecto
-<img width="878" height="2328" alt="proyectocompleto" src="https://github.com/user-attachments/assets/668d80d6-b9ac-4185-837e-24aeb3091123" />
+1. 📈 **Inteligencia de Mercado:** Comparativas de precios, posicionamiento competitivo y cuotas de mercado.
+2. 🔥 **Inteligencia de Tendencias:** Análisis de volumen de búsqueda de palabras clave y análisis de sentimiento.
+3. 🔮 **Inteligencia de Predicción:** Algoritmos de proyección de ventas basados en modelos de regresión lineal.
+4. 💡 **Inteligencia de Innovación:** Identificación dinámica de nichos y oportunidades emergentes en el mercado.
 
-## ⚡ Inicio Rápido
+---
 
-### Backend (Laravel)
+## 🛠️ Stack Tecnológico & Arquitectura
 
-<img width="849" height="1275" alt="Backend" src="https://github.com/user-attachments/assets/19ac6057-4305-41fc-9483-d2d53791681d" />
+### **Frontend (SPA)**
+- **Framework:** React 18 + TypeScript + Vite 5
+- **Estilos & UI:** Tailwind CSS + Lucide Icons
+- **Visualización de Datos:** Recharts (gráficos interactivos adaptables)
+- **Rutado:** React Router v6
+- **Despliegue:** Vercel
 
-API disponible en: http://localhost:8000
+### **Backend (API RESTful)**
+- **Framework:** Laravel 11 (PHP 8.2+)
+- **Base de Datos:** MySQL 8.0
+- **Autenticación:** Laravel Sanctum (Tokens de API con seguridad SPA)
+- **Testing:** PHPUnit
+- **Despliegue:** Railway
 
-### Frontend (React)
+---
 
-<img width="878" height="984" alt="Frontend" src="https://github.com/user-attachments/assets/6a5d8105-4ebc-447a-9107-5bebbffd660a" />
+## 🏗️ Estructura del Monorepo
 
-Aplicación disponible en: http://localhost:5173
+```
+MarkIntelligence/
+├── Backend/             # API RESTful en Laravel 11
+│   ├── app/             # Controladores, Modelos y Lógica de Negocio
+│   ├── database/        # Migraciones y Seeders
+│   └── routes/          # Endpoints de API (/api/v1)
+├── Frontend/            # SPA en React 18 + TypeScript
+│   ├── src/             # Componentes, Vistas, Hooks y Servicios API
+│   └── public/          # Assets estáticos
+└── docs/                # Documentación Técnica Completa (Architecture, Database, API)
+```
 
-## 📚 Documentación Interactiva
+---
 
-<img width="753" height="424" alt="docs" src="https://github.com/user-attachments/assets/a7adb875-701a-40a0-9dec-e3c4c6f4712a" />
+## ⚡ Inicio Rápido en Desarrollo Local
 
-Toda la documentación técnica y de negocio vive en la carpeta `/docs`:
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/TonyE24/MarkIntelligence.git
+cd MarkIntelligence
+```
 
-- ⚙️ **[Guía de Instalación Local](docs/INSTALLATION.md)** - Cómo levantar el proyecto de cero.
-- 🚀 **[Guía de Deploy (Producción)](docs/DEPLOYMENT.md)** - Cómo subir a Vercel y Railway.
-- 🔌 **[Documentación de API](docs/API_DOCUMENTATION.md)** - Endpoints, Headers y ejemplos.
-- 📊 **[Esquema de Presentación](docs/PRESENTATION_OUTLINE.md)** - Pitch estructurado para el Reto Ogilvy.
-- 💡 **[Estrategia de APIs](docs/API_STRATEGY.md)** y **[Decisiones Técnicas](docs/TECHNICAL_DECISIONS.md)**.
-- 🏗️ **[Arquitectura](docs/ARCHITECTURE.md)** y **[Base de Datos](docs/DATABASE_SCHEMA.md)**.
+### 2. Levantar el Backend (Laravel)
+```bash
+cd Backend
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
+```
+> El Backend estará escuchando en: `http://localhost:8000`
+
+### 3. Levantar el Frontend (React)
+```bash
+cd ../Frontend
+npm install
+npm run dev
+```
+> El Frontend estará escuchando en: `http://localhost:5173`
+
+---
+
+## 📚 Documentación Técnica Completa
+
+Toda la documentación técnica del sistema se encuentra organizada en la carpeta [`/docs`](docs/README.md):
+
+* 🏗️ **[Arquitectura del Sistema](docs/ARCHITECTURE.md):** Diagrama de capas y comunicación desacoplada.
+* 💾 **[Esquema de Base de Datos](docs/DATABASE_SCHEMA.md):** Modelo ER, tablas y relaciones.
+* 🔌 **[Documentación de API](docs/API_DOCUMENTATION.md):** Especificación de endpoints, headers y formatos JSON.
+* 🔧 **[Decisiones Técnicas](docs/TECHNICAL_DECISIONS.md):** Justificación del stack, trade-offs y patrones de diseño.
+* ⚙️ **[Guía de Instalación Local](docs/INSTALLATION.md):** Requisitos y troubleshooting.
+* 🚀 **[Guía de Despliegue](docs/DEPLOYMENT.md):** Configuración en Vercel y Railway.
+
+---
+
+## 👨‍💻 Autor
+
+**Tony E.**  
+- **GitHub:** [@TonyE24](https://github.com/TonyE24)

@@ -95,7 +95,7 @@ function Sidebar({ open, onClose }: SidebarProps) {
               MI
             </div>
             <div>
-              <p className="font-black text-base leading-none">MarketIntelligence</p>
+              <p className="font-black text-base leading-none">MarkIntelligence</p>
               <p className="text-gray-400 text-base mt-0.5">Para PYMEs</p>
             </div>
           </div>
