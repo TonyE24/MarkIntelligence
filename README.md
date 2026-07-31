@@ -103,9 +103,4 @@ Toda la documentación técnica del sistema se encuentra organizada en la carpet
 * **[Guía de Instalación Local](docs/INSTALLATION.md):** Requisitos y troubleshooting.
 * **[Guía de Despliegue](docs/DEPLOYMENT.md):** Configuración en Vercel y Railway.
 
----
 
-## 👨‍💻 Autor
-
-**Tony E.**  
-- **GitHub:** [@TonyE24](https://github.com/TonyE24)
