@@ -9,17 +9,17 @@ const getCompanyId = () => {
 }
 
 const kpiConfig: Record<string, { icon: string; color: string; bg: string }> = {
-  market_share:         { icon: '📊', color: 'text-indigo-600', bg: 'bg-indigo-50' },
-  sentiment:            { icon: '💬', color: 'text-purple-600', bg: 'bg-purple-50' },
-  next_prediction:      { icon: '🔮', color: 'text-orange-600', bg: 'bg-orange-50' },
+  market_share: { icon: '📊', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+  sentiment: { icon: '💬', color: 'text-purple-600', bg: 'bg-purple-50' },
+  next_prediction: { icon: '🔮', color: 'text-orange-600', bg: 'bg-orange-50' },
   active_opportunities: { icon: '💡', color: 'text-green-600', bg: 'bg-green-50' },
 }
 
 const modules = [
-  { to: '/dashboard/market',      icon: '📊', title: 'Mercado',      description: 'Precios y cuota de mercado vs. competidores.',      color: 'bg-indigo-50' },
-  { to: '/dashboard/trends',      icon: '📈', title: 'Tendencias',   description: 'Keywords y sentimiento de clientes.',                color: 'bg-purple-50' },
-  { to: '/dashboard/predictions', icon: '🔮', title: 'Predicciones', description: 'Proyecciones de ventas con regresión lineal.',       color: 'bg-orange-50' },
-  { to: '/dashboard/innovation',  icon: '💡', title: 'Innovación',   description: 'Oportunidades, gaps y tecnologías emergentes.',      color: 'bg-green-50' },
+  { to: '/dashboard/market', icon: '📊', title: 'Mercado', description: 'Precios y cuota de mercado vs. competidores.', color: 'bg-indigo-50' },
+  { to: '/dashboard/trends', icon: '📈', title: 'Tendencias', description: 'Keywords y sentimiento de clientes.', color: 'bg-purple-50' },
+  { to: '/dashboard/predictions', icon: '🔮', title: 'Predicciones', description: 'Proyecciones de ventas con regresión lineal.', color: 'bg-orange-50' },
+  { to: '/dashboard/innovation', icon: '💡', title: 'Innovación', description: 'Oportunidades, gaps y tecnologías emergentes.', color: 'bg-green-50' },
 ]
 
 function DashboardPage() {
@@ -54,7 +54,7 @@ function DashboardPage() {
     <DashboardLayout>
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-800">
-          ¡Bienvenido, {user.name?.split(' ')[0] || 'Usuario'}! 👋
+          ¡Bienvenido, {user.name?.split(' ')[0] || 'Usuario'}!
         </h1>
         <p className="text-gray-500 mt-1 text-sm">Resumen de inteligencia para tu empresa.</p>
       </div>
