@@ -12,7 +12,7 @@ Plataforma Web Full-Stack de analítica de mercado y soporte a decisiones de neg
 
 ## Enlaces Rápidos
 
-* **Demo en Vivo (Frontend):** [mark-intelligence.vercel.app](https://mark-intelligence.vercel.app/)
+* **Demo en Vivo (Frontend):** [mark-intelligence.vercel.app](https://mark-intelligence.vercel.app/login)
 * **Repositorio GitHub:** [github.com/TonyE24/MarkIntelligence](https://github.com/TonyE24/MarkIntelligence)
 * **Documentación Técnica:** [Carpeta /docs](docs/README.md)
 
