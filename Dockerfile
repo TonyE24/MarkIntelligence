@@ -20,8 +20,8 @@ WORKDIR /app
 # Copiar archivos del Backend
 COPY Backend/ /app/
 
-# Instalar dependencias ignorando la restricción estricta de versión de PHP en composer.json
-RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
+# Instalar dependencias incluyendo Faker para los seeders de prueba
+RUN composer install --optimize-autoloader --ignore-platform-reqs
 
 EXPOSE 10000
 

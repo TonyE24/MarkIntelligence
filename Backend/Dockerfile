@@ -17,7 +17,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
+RUN composer install --optimize-autoloader --ignore-platform-reqs
 
 EXPOSE 10000
 
