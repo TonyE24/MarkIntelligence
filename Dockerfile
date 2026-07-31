@@ -1,6 +1,6 @@
-FROM php:8.2-cli
+FROM php:8.3-cli
 
-# Instalar dependencias requeridas para Laravel
+# Instalar dependencias del sistema y extensiones de PHP requeridas por Laravel
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -20,8 +20,8 @@ WORKDIR /app
 # Copiar archivos del Backend
 COPY Backend/ /app/
 
-# Instalar dependencias de Laravel
-RUN composer install --no-dev --optimize-autoloader
+# Instalar dependencias ignorando la restricción estricta de versión de PHP en composer.json
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 
 EXPOSE 10000
 
